@@ -1,10 +1,51 @@
-  <div class="container-scroller">
+<style type="text/css">
+.form-group .file-upload-default {
+  width:60%;
+  height:46px;
+  visibility:visible;
+}
+.form-group .file-upload-info {
+  visibility:hidden;
+}
+#upload-popup {
+    position: fixed;
+    top: 40%;
+    left: 0px;
+    width: 300px;
+    z-index: 9999;
+    border-radius: 0px;
+    margin-left: 40%;
+    opacity: 0;
+    background-color: var(--primary-color);
+    border: var(--border-white);
+    color: var(--white-dark);
+    padding: var(--padding-medium);
+    display: none;
+}
+#upload-popup > progress {
+    width: 100%;
+    height: 30px;
+}
+#upload-popup > h3 {
+    font-size: var(--font-size-medium);
+}
+#upload-popup > p {
+    font-size: var(--font-size-small);
+    margin: 0;
+}
+</style>
+<div id="upload-popup">
+		<progress id="progressBar" value="0" max="100"></progress>
+		<h3 id="status">0% uploaded</h3>
+		<p id="loaded_n_total">Uploaded 0 bytes of 0</p>			
+	</div>
+<div class="container-scroller">
     <!-- partial:../../partials/_navbar.html -->
     <?= view('topmenu'); ?>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:../../partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
+      <!--<div class="theme-setting-wrapper">
         <div id="settings-trigger"><i class="mdi mdi-settings"></i></div>
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close mdi mdi-close"></i>
@@ -21,7 +62,7 @@
             <div class="tiles default"></div>
           </div>
         </div>
-      </div>
+      </div>-->
       <div id="right-sidebar" class="settings-panel">
         <i class="settings-close mdi mdi-close"></i>
         <ul class="nav nav-tabs" id="setting-panel" role="tablist">
@@ -32,10 +73,10 @@
             <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
           </li>
         </ul>
-        <div class="tab-content" id="setting-content">
+        <!--<div class="tab-content" id="setting-content">
           <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
             <div class="add-items d-flex px-3 mb-0">
-              <form class="form w-100">
+              <form class="pt-3" id="uploadForm" name="uploadForm" method="post" action="<?php echo base_url()."/uploadfile"; ?>">
                 <div class="form-group d-flex">
                   <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
                   <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
@@ -108,7 +149,6 @@
               <p class="text-gray mb-0 ">Call Sarah Graves</p>
             </div>
           </div>
-          <!-- To do section tab ends -->
           <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
             <div class="d-flex align-items-center justify-content-between border-bottom">
               <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
@@ -168,8 +208,7 @@
               </li>
             </ul>
           </div>
-          <!-- chat tab ends -->
-        </div>
+        </div>-->
       </div>
       <!-- partial -->
       <!-- partial:../../partials/_sidebar.html -->
@@ -185,12 +224,12 @@
                   <!-- <p class="card-description">
                     Basic form elements
                   </p> -->
-                  <form class="forms-sample">
+                  <form enctype="multipart/form-data" class="pt-3" id="uploadForm" name="uploadForm" method="post" action="<?php echo base_url()."/uploadfile"; ?>">
                     <div class="form-group">
                       <!-- <label>File upload</label> -->
-                      <input type="file" name="img[]" class="file-upload-default">
                       <div class="input-group col-xs-3">
                         <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                        <input type="file" accept=".pdf,.jpg,.zip" name="secure_file" class="secure_file file-upload-default">
                         <span class="input-group-append">
                           <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                         </span>

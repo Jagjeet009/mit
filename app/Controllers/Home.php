@@ -4,11 +4,12 @@ use CodeIgniter\HTTP\IncomingRequest;
 use App\Models\UserModel;
 class Home extends BaseController
 {
-    public $requets,$session;
+    public $requets,$session,file;
     public function __construct(){
         //parent::__construct();
         $this->request = service('request');
         $this->session = \Config\Services::session();
+        $this->file = new \CodeIgniter\Files\File();
     }     
     public function index()
     {
@@ -51,8 +52,7 @@ class Home extends BaseController
         //print_r($this->request->getPost());die;
         $data=array(
             'email'=>$this->request->getPost('email'),
-            'password'=>$this->hash($this->request->getPost('password')),
-            'cpassword'=>$this->request->getPost('password')
+            'password'=>$this->hash($this->request->getPost('password'))
         );        
         $userModel = new UserModel();
         $users=$userModel->insertUsers($data);
@@ -95,4 +95,42 @@ class Home extends BaseController
         $this->session->destroy();
         return redirect()->to('/');
     }    
+    public function uploadfile(){
+        
+        print_r($this->file);
+        helper(['form', 'url']);        
+        $secure_file = $files = $this->request->getFiles();
+        print_r($this->request->getFiles());
+        die;
+		if(isset($_FILES['qvideo']['name'])){
+			$clip_name='';
+			$config['upload_path'] = 'uploads/';
+			$config['encrypt_name'] = TRUE;
+			$config['allowed_types'] = '*';
+			$this->upload->initialize($config);
+			$this->load->library('upload', $config);
+			$error_check=$this->upload->do_upload('qvideo');	
+			/*if($error_check==1){
+				$filename='uploads/'.$this->upload->file_name;
+				$ext=$this->upload->file_ext;
+				if($ext!=".mp4" && $ext!=".MP4"){		//convert to mp4
+					$filename_only=str_replace($ext,'',$filename);
+					$new_filename=$filename_only.".mp4";
+					exec("ffmpeg -i ".$filename." -c:a aac -b:a 128k -c:v libx264 -crf 23 ".$new_filename);	//for video
+					if(file_exists($filename)){			//to remove uploaded video file after conversion to mp4
+						unlink($filename);
+					}
+					$clip_name=$new_filename;
+				}else{
+					$filename=str_replace('uploads/','',$filename);
+					$clip_name=$filename;
+				}
+				echo json_encode((object) array("success"=>1,"file"=>$clip_name));
+			}else{
+				echo $this->upload->display_errors(); 
+				//print_r($_FILES['clip']);
+				die;				
+			}*/
+		}        
+    }
 }

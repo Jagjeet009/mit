@@ -39,6 +39,8 @@ $routes->post('login', 'Home::login');
 $routes->add('download', 'Home::download');
 $routes->add('upload', 'Home::upload');
 $routes->add('logout', 'Home::logout');
+$routes->post('uploadfile', 'Home::uploadfile');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
