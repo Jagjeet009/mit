@@ -119,12 +119,12 @@ function progressHandler(event) {
   _("progressBar").value = Math.round(percent);
   _("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
 }
-/*function completeHandler(event){
+function completeHandler(event){
 	//_("status").innerHTML = event.target.responseText;
 	//_("progressBar").value = 0;
 	$('#upload-popup').hide();
 	//console.log(event);
-}*/
+}
 function errorHandler(event) {
   _("status").innerHTML = "Upload Failed";
 }

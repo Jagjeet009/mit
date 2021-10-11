@@ -1,15 +1,12 @@
 <?php
 namespace App\Controllers;
-use CodeIgniter\HTTP\IncomingRequest;
 use App\Models\UserModel;
 class Home extends BaseController
 {
-    public $requets,$session,file;
+    public $requets, $session;
     public function __construct(){
         //parent::__construct();
-        $this->request = service('request');
         $this->session = \Config\Services::session();
-        $this->file = new \CodeIgniter\Files\File();
     }     
     public function index()
     {
@@ -96,12 +93,20 @@ class Home extends BaseController
         return redirect()->to('/');
     }    
     public function uploadfile(){
-        
-        print_r($this->file);
-        helper(['form', 'url']);        
-        $secure_file = $files = $this->request->getFiles();
-        print_r($this->request->getFiles());
+        helper(['form', 'url']);
+        $file=$this->request->getFile('secure_file');
+        $files = $this->request->getFiles();
+        print_r($file);
+        /*$avatar = $this->request->getFile('secure_file');
+        $avatar->move(WRITEPATH . 'uploads');
+          $data = array(
+            'name' =>  $avatar->getClientName(),
+            'type'  => $avatar->getClientMimeType()
+          );        
+        print_r($data);*/
         die;
+
+
 		if(isset($_FILES['qvideo']['name'])){
 			$clip_name='';
 			$config['upload_path'] = 'uploads/';

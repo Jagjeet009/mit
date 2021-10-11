@@ -1,9 +1,6 @@
 <?php
-
 namespace Config;
-
 use CodeIgniter\Config\BaseConfig;
-
 class App extends BaseConfig
 {
     /**
@@ -23,8 +20,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost/';
-
+    public $baseURL = 'http://localhost:8080/mit/';
     /**
      * --------------------------------------------------------------------------
      * Index File
@@ -36,8 +32,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $indexPage = 'index.php';
-
+    public $indexPage = '';
     /**
      * --------------------------------------------------------------------------
      * URI PROTOCOL
@@ -55,8 +50,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $uriProtocol = 'REQUEST_URI';
-
+    public $uriProtocol = 'PATH_INFO';
     /**
      * --------------------------------------------------------------------------
      * Default Locale
@@ -70,7 +64,6 @@ class App extends BaseConfig
      * @var string
      */
     public $defaultLocale = 'en';
-
     /**
      * --------------------------------------------------------------------------
      * Negotiate Locale
@@ -84,7 +77,6 @@ class App extends BaseConfig
      * @var bool
      */
     public $negotiateLocale = false;
-
     /**
      * --------------------------------------------------------------------------
      * Supported Locales
@@ -97,7 +89,6 @@ class App extends BaseConfig
      * @var string[]
      */
     public $supportedLocales = ['en'];
-
     /**
      * --------------------------------------------------------------------------
      * Application Timezone
@@ -109,7 +100,6 @@ class App extends BaseConfig
      * @var string
      */
     public $appTimezone = 'America/Chicago';
-
     /**
      * --------------------------------------------------------------------------
      * Default Character Set
@@ -123,7 +113,6 @@ class App extends BaseConfig
      * @var string
      */
     public $charset = 'UTF-8';
-
     /**
      * --------------------------------------------------------------------------
      * URI PROTOCOL
@@ -137,7 +126,6 @@ class App extends BaseConfig
      * @var bool
      */
     public $forceGlobalSecureRequests = false;
-
     /**
      * --------------------------------------------------------------------------
      * Session Driver
@@ -152,7 +140,6 @@ class App extends BaseConfig
      * @var string
      */
     public $sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler';
-
     /**
      * --------------------------------------------------------------------------
      * Session Cookie Name
@@ -163,7 +150,6 @@ class App extends BaseConfig
      * @var string
      */
     public $sessionCookieName = 'ci_session';
-
     /**
      * --------------------------------------------------------------------------
      * Session Expiration
@@ -175,7 +161,6 @@ class App extends BaseConfig
      * @var int
      */
     public $sessionExpiration = 7200;
-
     /**
      * --------------------------------------------------------------------------
      * Session Save Path
@@ -194,7 +179,6 @@ class App extends BaseConfig
      * @var string
      */
     public $sessionSavePath = WRITEPATH . 'session';
-
     /**
      * --------------------------------------------------------------------------
      * Session Match IP
@@ -208,7 +192,6 @@ class App extends BaseConfig
      * @var bool
      */
     public $sessionMatchIP = false;
-
     /**
      * --------------------------------------------------------------------------
      * Session Time to Update
@@ -219,7 +202,6 @@ class App extends BaseConfig
      * @var int
      */
     public $sessionTimeToUpdate = 300;
-
     /**
      * --------------------------------------------------------------------------
      * Session Regenerate Destroy
@@ -232,7 +214,6 @@ class App extends BaseConfig
      * @var bool
      */
     public $sessionRegenerateDestroy = false;
-
     /**
      * --------------------------------------------------------------------------
      * Cookie Prefix
@@ -245,7 +226,6 @@ class App extends BaseConfig
      * @deprecated use Config\Cookie::$prefix property instead.
      */
     public $cookiePrefix = '';
-
     /**
      * --------------------------------------------------------------------------
      * Cookie Domain
@@ -258,7 +238,6 @@ class App extends BaseConfig
      * @deprecated use Config\Cookie::$domain property instead.
      */
     public $cookieDomain = '';
-
     /**
      * --------------------------------------------------------------------------
      * Cookie Path
@@ -271,7 +250,6 @@ class App extends BaseConfig
      * @deprecated use Config\Cookie::$path property instead.
      */
     public $cookiePath = '/';
-
     /**
      * --------------------------------------------------------------------------
      * Cookie Secure
@@ -284,7 +262,6 @@ class App extends BaseConfig
      * @deprecated use Config\Cookie::$secure property instead.
      */
     public $cookieSecure = false;
-
     /**
      * --------------------------------------------------------------------------
      * Cookie HttpOnly
@@ -297,7 +274,6 @@ class App extends BaseConfig
      * @deprecated use Config\Cookie::$httponly property instead.
      */
     public $cookieHTTPOnly = true;
-
     /**
      * --------------------------------------------------------------------------
      * Cookie SameSite
@@ -323,7 +299,6 @@ class App extends BaseConfig
      * @deprecated use Config\Cookie::$samesite property instead.
      */
     public $cookieSameSite = 'Lax';
-
     /**
      * --------------------------------------------------------------------------
      * Reverse Proxy IPs
@@ -337,13 +312,12 @@ class App extends BaseConfig
      * You can use both an array or a comma-separated list of proxy addresses,
      * as well as specifying whole subnets. Here are a few examples:
      *
-     * Comma-separated:	'10.0.1.200,192.168.5.0/24'
+     * Comma-separated: '10.0.1.200,192.168.5.0/24'
      * Array: ['10.0.1.200', '192.168.5.0/24']
      *
      * @var string|string[]
      */
     public $proxyIPs = '';
-
     /**
      * --------------------------------------------------------------------------
      * CSRF Token Name
@@ -356,7 +330,6 @@ class App extends BaseConfig
      * @var string
      */
     public $CSRFTokenName = 'csrf_test_name';
-
     /**
      * --------------------------------------------------------------------------
      * CSRF Header Name
@@ -369,7 +342,6 @@ class App extends BaseConfig
      * @var string
      */
     public $CSRFHeaderName = 'X-CSRF-TOKEN';
-
     /**
      * --------------------------------------------------------------------------
      * CSRF Cookie Name
@@ -382,7 +354,6 @@ class App extends BaseConfig
      * @var string
      */
     public $CSRFCookieName = 'csrf_cookie_name';
-
     /**
      * --------------------------------------------------------------------------
      * CSRF Expire
@@ -395,7 +366,6 @@ class App extends BaseConfig
      * @var int
      */
     public $CSRFExpire = 7200;
-
     /**
      * --------------------------------------------------------------------------
      * CSRF Regenerate
@@ -408,7 +378,6 @@ class App extends BaseConfig
      * @var bool
      */
     public $CSRFRegenerate = true;
-
     /**
      * --------------------------------------------------------------------------
      * CSRF Redirect
@@ -421,7 +390,6 @@ class App extends BaseConfig
      * @var bool
      */
     public $CSRFRedirect = true;
-
     /**
      * --------------------------------------------------------------------------
      * CSRF SameSite
@@ -441,7 +409,6 @@ class App extends BaseConfig
      * @var string
      */
     public $CSRFSameSite = 'Lax';
-
     /**
      * --------------------------------------------------------------------------
      * Content Security Policy
